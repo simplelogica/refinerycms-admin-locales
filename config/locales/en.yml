@@ -1,0 +1,18 @@
+es:
+  refinery:
+    plugins:
+      admin_locales:
+        title: User locales
+    admin_locales:
+      admin:
+        admin_locales:
+          records:
+            title: User locales
+            sorry_no_results: No results, sorry.
+            no_items_yet: There are not users yet
+          user:
+            locale: Locale
+  activerecord:
+    attributes:
+      'refinery/admin_locales/admin_locale':
+        locale: Locale

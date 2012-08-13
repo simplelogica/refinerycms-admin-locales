@@ -1,0 +1,13 @@
+<li id="sortable_<%= user.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <strong><%= user.username %></strong>
+    <span class="preview">
+      <%= t '.locale' %>: <%= user.locale %>
+    </span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('application_edit.png'),
+                refinery.edit_admin_locales_admin_admin_locale_path(user),
+                :title => t('edit', :scope => 'refinery.admin.users') if current_refinery_user.can_edit?(user) %>
+  </span>
+</li>
