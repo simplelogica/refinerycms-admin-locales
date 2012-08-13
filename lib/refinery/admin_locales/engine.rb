@@ -17,6 +17,19 @@ module Refinery
 
       config.after_initialize do
         Refinery.register_engine(Refinery::AdminLocales)
+
+        ::Refinery::AdminController.class_eval do
+          def find_or_set_locale_with_default
+            if current_refinery_user && current_refinery_user.locale
+              ::Refinery::I18n.current_locale = current_refinery_user.locale
+              ::I18n.locale = ::Refinery::I18n.current_locale
+            else
+              find_or_set_locale_without_default
+            end
+          end
+
+          alias_method_chain :find_or_set_locale, :default
+        end
       end
     end
   end
