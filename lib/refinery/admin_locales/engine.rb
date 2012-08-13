@@ -10,6 +10,8 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.name = "admin_locales"
           plugin.pathname = root
+          plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.admin_locales_admin_admin_locales_path }
+          plugin.menu_match = /refinery\/admin_locales/
         end
       end
 
