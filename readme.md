@@ -1,5 +1,9 @@
 # Admin Locales extension for Refinery CMS.
 
+## How to install this extension
+  rails generate refinerycms_admin_locales
+  rake db:migrate
+
 ## How to build this extension as a gem
 
     gem build refinerycms-admin-locales.gemspec
