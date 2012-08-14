@@ -1,0 +1,20 @@
+<%= form_for @user, :url => admin_admin_locale_path(@user), :method => :put do |f| %>
+
+  <%= render :partial => "/shared/admin/error_messages",
+             :locals => {
+               :object => @user,
+               :include_object_name => true
+             } %>
+
+  <div class='field'>
+    <%= f.label :locale %>
+    <%= f.select :locale, options_for_select(Refinery::I18n.locales.map(&:reverse), @user.locale) %>
+  </div>
+
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => false,
+               :hide_delete => true
+             } %>
+<% end %>

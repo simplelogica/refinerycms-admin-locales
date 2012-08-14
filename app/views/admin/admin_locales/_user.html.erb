@@ -2,12 +2,12 @@
   <span class='title'>
     <strong><%= user.username %></strong>
     <span class="preview">
-      <%= t '.locale' %>: <%= user.locale %>
+      <%= t '.locale' %>: <%= user.locale || t('.any') %>
     </span>
   </span>
   <span class='actions'>
     <%= link_to refinery_icon_tag('application_edit.png'),
-                refinery.edit_admin_locales_admin_admin_locale_path(user),
-                :title => t('edit', :scope => 'refinery.admin.users') if current_refinery_user.can_edit?(user) %>
+                edit_admin_admin_locale_path(user),
+                :title => t('.edit') %>
   </span>
 </li>
