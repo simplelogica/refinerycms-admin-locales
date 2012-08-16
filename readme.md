@@ -27,7 +27,7 @@ at the same time
 ### Refinery 1:
 
 #### Add gem to Gemfile
-    gem 'refinerycms-admin-locales', '1.0', :git => 'git_repo/refinerycms-admin-locales', :branch => 'refinery-1'
+    gem 'refinerycms-admin-locales', '1.0', :git => 'git_repo/refinerycms-admin-locales', :branch => 'refinerycms1'
 
 #### Install extension
     rails generate refinerycms_admin_locales
