@@ -9,14 +9,14 @@ describe Refinery do
 
         describe "admin_locales list" do
           before(:each) do
-            FactoryGirl.create(:admin_locale, :locale => "UniqueTitleOne")
-            FactoryGirl.create(:admin_locale, :locale => "UniqueTitleTwo")
+            FactoryGirl.create(:user_with_locale, :locale => "es")
+            FactoryGirl.create(:user_with_locale, :locale => "en")
           end
 
           it "shows two items" do
             visit refinery.admin_locales_admin_admin_locales_path
-            page.should have_content("UniqueTitleOne")
-            page.should have_content("UniqueTitleTwo")
+            page.should have_content("es")
+            page.should have_content("en")
           end
         end
 
@@ -47,7 +47,7 @@ describe Refinery do
           end
 
           context "duplicate" do
-            before(:each) { FactoryGirl.create(:admin_locale, :locale => "UniqueTitle") }
+            before(:each) { FactoryGirl.create(:user_with_locale, :locale => "UniqueTitle") }
 
             it "should fail" do
               visit refinery.admin_locales_admin_admin_locales_path
@@ -65,7 +65,7 @@ describe Refinery do
         end
 
         describe "edit" do
-          before(:each) { FactoryGirl.create(:admin_locale, :locale => "A locale") }
+          before(:each) { FactoryGirl.create(:user_with_locale, :locale => "A locale") }
 
           it "should succeed" do
             visit refinery.admin_locales_admin_admin_locales_path
@@ -83,14 +83,14 @@ describe Refinery do
         end
 
         describe "destroy" do
-          before(:each) { FactoryGirl.create(:admin_locale, :locale => "UniqueTitleOne") }
+          before(:each) { FactoryGirl.create(:user_with_locale, :locale => "es") }
 
           it "should succeed" do
             visit refinery.admin_locales_admin_admin_locales_path
 
             click_link "Remove this admin locale forever"
 
-            page.should have_content("'UniqueTitleOne' was successfully removed.")
+            page.should have_content("'es' was successfully removed.")
             Refinery::AdminLocales::AdminLocale.count.should == 0
           end
         end
