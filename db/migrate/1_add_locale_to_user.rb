@@ -5,7 +5,7 @@ class AddLocaleToUser < ActiveRecord::Migration
   end
 
   def down
-    remove_column :refinery_users, :locale, :string
+    remove_column :refinery_users, :locale
   end
 
 end
