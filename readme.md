@@ -9,8 +9,8 @@ and a tab to change this locale in each user.
 in the views. If the user hasn't locale, the find locale method used will be the default
 refinery method.
 
-  This solves the locale dashboard conflicts with multiple users want different locales
-at the same time
+  This refinary extension solves the locale dashboard conflicts with multiple
+users who need different locales at the same time.
 
 ## How to add this extension to your project
 
