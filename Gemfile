@@ -1,16 +1,18 @@
 source 'https://rubygems.org'
 
-gem 'refinerycms', '~>2.0.0'
-gem 'refinerycms-i18n', '~>2.0.0'
+gemspec
+
+gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
+gem 'refinerycms-i18n', :git => 'git://github.com/parndt/refinerycms-i18n.git'
+gem 'refinerycms-settings', :git => 'git://github.com/parndt/refinerycms-settings.git'
+
 
 group :development, :test do
 
-  gem 'refinerycms-testing', '~>2.0.0'
+  gem 'refinerycms-testing', :git => 'git://github.com/resolve/refinerycms.git'
 
   unless defined?(JRUBY_VERSION)
-    group :development, :test do
-  gem 'sqlite3'
-end
+    gem 'sqlite3'
     gem 'mysql2'
     # gem 'pg'
   end
