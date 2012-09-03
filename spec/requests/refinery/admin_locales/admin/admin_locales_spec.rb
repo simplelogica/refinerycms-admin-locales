@@ -1,101 +1,59 @@
 # encoding: utf-8
 require "spec_helper"
 
-describe Refinery do
-  describe "AdminLocales" do
-    describe "Admin" do
-      describe "admin_locales" do
-        login_refinery_user
+describe "admin_locales" do
+  refinery_login_with :refinery_user
 
-        describe "admin_locales list" do
-          before(:each) do
-            FactoryGirl.create(:user_with_locale, :locale => "es")
-            FactoryGirl.create(:user_with_locale, :locale => "en")
-          end
+  let(:locale) { 'es' }
+  let(:another_locale) { 'en' }
+  let(:user) { Refinery::User.first }
+  let(:user_with_another_locale) { FactoryGirl.create(:user_with_locale, :locale => another_locale) }
+  let(:user_without_locale) { FactoryGirl.create(:user) }
+  before(:each) do
+    user.update_attribute(:locale, locale)
+    user_with_another_locale
+    user_without_locale
+  end
 
-          it "shows two items" do
-            visit refinery.admin_locales_admin_admin_locales_path
-            page.should have_content("es")
-            page.should have_content("en")
-          end
-        end
+  context "list" do
+    before { visit refinery.admin_locales_admin_admin_locales_path }
 
-        describe "create" do
-          before(:each) do
-            visit refinery.admin_locales_admin_admin_locales_path
+    it "shows user with locale username" do
+      page.should have_xpath("//span[@class='title']//strong", :text => user.username)
+    end
 
-            click_link "Add New Admin Locale"
-          end
+    it "shows user with locale locale" do
+      page.should have_xpath("//span[@class='title']//span[@class='preview']", :text => locale)
+    end
 
-          context "valid data" do
-            it "should succeed" do
-              fill_in "Locale", :with => "This is a test of the first string field"
-              click_button "Save"
+    it "shows user with another locale username" do
+      page.should have_xpath("//span[@class='title']//strong", :text => user_with_another_locale.username)
+    end
 
-              page.should have_content("'This is a test of the first string field' was successfully added.")
-              Refinery::AdminLocales::AdminLocale.count.should == 1
-            end
-          end
+    it "shows user with another locale locale" do
+      page.should have_xpath("//span[@class='title']//span[@class='preview']", :text => another_locale)
+    end
 
-          context "invalid data" do
-            it "should fail" do
-              click_button "Save"
+    it "shows user without locale username" do
+      page.should have_xpath("//span[@class='title']//strong", :text => user_without_locale.username)
+    end
+  end
 
-              page.should have_content("Locale can't be blank")
-              Refinery::AdminLocales::AdminLocale.count.should == 0
-            end
-          end
+  describe "edit an user" do
 
-          context "duplicate" do
-            before(:each) { FactoryGirl.create(:user_with_locale, :locale => "UniqueTitle") }
+    it "with locale shows a select with the locale selected" do
+      visit refinery.edit_admin_locales_admin_admin_locale_path(user)
+      page.should have_xpath("//div[@class='field']//option[@selected='selected' and @value='#{locale}']")
+    end
 
-            it "should fail" do
-              visit refinery.admin_locales_admin_admin_locales_path
+    it "with another locale shows a select with the locale selected" do
+      visit refinery.edit_admin_locales_admin_admin_locale_path(user_with_another_locale)
+      page.should have_xpath("//div[@class='field']//option[@selected='selected' and @value='#{another_locale}']")
+    end
 
-              click_link "Add New Admin Locale"
-
-              fill_in "Locale", :with => "UniqueTitle"
-              click_button "Save"
-
-              page.should have_content("There were problems")
-              Refinery::AdminLocales::AdminLocale.count.should == 1
-            end
-          end
-
-        end
-
-        describe "edit" do
-          before(:each) { FactoryGirl.create(:user_with_locale, :locale => "A locale") }
-
-          it "should succeed" do
-            visit refinery.admin_locales_admin_admin_locales_path
-
-            within ".actions" do
-              click_link "Edit this admin locale"
-            end
-
-            fill_in "Locale", :with => "A different locale"
-            click_button "Save"
-
-            page.should have_content("'A different locale' was successfully updated.")
-            page.should have_no_content("A locale")
-          end
-        end
-
-        describe "destroy" do
-          before(:each) { FactoryGirl.create(:user_with_locale, :locale => "es") }
-
-          it "should succeed" do
-            visit refinery.admin_locales_admin_admin_locales_path
-
-            click_link "Remove this admin locale forever"
-
-            page.should have_content("'es' was successfully removed.")
-            Refinery::AdminLocales::AdminLocale.count.should == 0
-          end
-        end
-
-      end
+    it "without locale shows a select without locale selected" do
+      visit refinery.edit_admin_locales_admin_admin_locale_path(user_without_locale)
+      page.should_not have_xpath("//div[@class='field']//option[@selected='selected']")
     end
   end
 end
