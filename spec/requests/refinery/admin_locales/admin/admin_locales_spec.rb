@@ -39,7 +39,7 @@ describe "admin_locales" do
     end
 
     it "shows user with another locale locale" do
-      page.should have_xpath("//span[@class='title']//span[@class='preview']", :text => 'Locale: Default')
+      page.should have_xpath("//span[@class='title']//span[@class='preview']", :text => I18n.t('refinery.admin_locales.admin.admin_locales.user.default'))
     end
   end
 
