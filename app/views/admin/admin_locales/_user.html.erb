@@ -2,7 +2,7 @@
   <span class='title'>
     <strong><%= user.username %></strong>
     <span class="preview">
-      <%= t '.locale' %>: <%= user.locale || t('.any') %>
+      <%= t '.locale' %>: <%= user.locale ? Refinery::I18n.locales[user.locale.to_sym] : t('.default') %>
     </span>
   </span>
   <span class='actions'>
