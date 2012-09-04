@@ -59,5 +59,28 @@ describe "admin_locales" do
       visit refinery.edit_admin_locales_admin_admin_locale_path(user_without_locale)
       page.should_not have_xpath("//div[@class='field']//option[@selected='selected']")
     end
+
+    context "and change locale" do
+      it "should render user list successfully" do
+        visit refinery.edit_admin_locales_admin_admin_locale_path(user)
+        select(Refinery::I18n.locales[another_locale.to_sym], :from => 'user_locale')
+        click_button 'submit_button'
+        # Flash message should be in previous locale, because locale is set acter the flash
+        page.should have_content("#{user.username} was successfully updated.")
+        # But content should be in new locale
+        page.should have_xpath("//span[@class='title']//span[@class='preview']", :text => 'Idioma: Español')
+      end
+
+      it "should change user locale" do
+        visit refinery.edit_admin_locales_admin_admin_locale_path(user)
+        expect{
+          select(Refinery::I18n.locales[another_locale.to_sym], :from => 'user_locale')
+          click_button 'submit_button'
+          user.reload
+        }.to change(user,:locale).from(locale).to(another_locale)
+      end
+    end
+
+
   end
 end
