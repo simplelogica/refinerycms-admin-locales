@@ -33,4 +33,4 @@ users who need different locales at the same time.
     rails generate refinerycms_admin_locales
     rake db:migrate
 
-**WARNING: Refinary 1 version, is not test, but it should work**
+**WARNING: Refinary 1 version, is not tested, but it should works**
