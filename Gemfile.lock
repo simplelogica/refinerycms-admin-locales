@@ -72,7 +72,7 @@ GIT
 PATH
   remote: .
   specs:
-    refinerycms-admin-locales (2.0)
+    refinerycms-admin-locales (2.1.0.dev)
       refinerycms-core (~> 2.1.0.dev)
 
 GEM
