@@ -11,6 +11,7 @@ en:
             sorry_no_results: No results, sorry.
             no_items_yet: There are not users yet
           user:
+            default: Default
             locale: Locale
   activerecord:
     attributes:

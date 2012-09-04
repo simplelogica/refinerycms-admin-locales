@@ -11,6 +11,7 @@ es:
             sorry_no_results: Lo siento, no hay resultados
             no_items_yet: No hay usuario todavía.
           user:
+            default: Por defecto
             locale: Idioma
   activerecord:
     attributes:
