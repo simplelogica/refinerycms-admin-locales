@@ -12,6 +12,7 @@ es:
             no_items_yet: No hay usuario todavía.
           user:
             default: Por defecto
+            edit: Editar este idioma
             locale: Idioma
   activerecord:
     attributes:
