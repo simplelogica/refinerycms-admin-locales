@@ -9,8 +9,8 @@ and a tab to change this locale in each user.
 in the views. If the user hasn't locale, the find locale method used will be the default
 refinery method.
 
-  This solves the locale dashboard conflicts with multiple users want different locales
-at the same time
+  This refinery extension solves the locale dashboard conflicts with multiple
+users who need different locales at the same time.
 
 ## How to add this extension to your project
 
@@ -33,10 +33,4 @@ at the same time
     rails generate refinerycms_admin_locales
     rake db:migrate
 
-## How to build this extension as a gem
-
-    gem build refinerycms-admin-locales.gemspec
-    gem install refinerycms-admin-locales.gem
-
-    # Sign up for a http://rubygems.org/ account and publish the gem
-    gem push refinerycms-admin-locales.gem
+**WARNING: Refinary 1 version, is not test, but it should work**
