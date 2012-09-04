@@ -17,7 +17,7 @@ users who need different locales at the same time.
 ### Refinery 2:
 
 #### Add gem to Gemfile
-    gem 'refinerycms-admin-locales', '2.0', :git => 'git_repo/refinerycms-admin-locales'
+    gem 'refinerycms-admin-locales'
 
 #### Install extension
     rake refinery_admin_locales:install:migrations
@@ -27,7 +27,7 @@ users who need different locales at the same time.
 ### Refinery 1:
 
 #### Add gem to Gemfile
-    gem 'refinerycms-admin-locales', '1.0', :git => 'git_repo/refinerycms-admin-locales', :branch => 'refinerycms1'
+    gem "refinerycms-admin-locales", "~> 1.0.0"
 
 #### Install extension
     rails generate refinerycms_admin_locales
