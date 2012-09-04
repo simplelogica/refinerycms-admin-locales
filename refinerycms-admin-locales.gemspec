@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.description       = %q{Manage locale for each user in the refinerycms admin.}
   s.summary           = %q{Admin Locales extension for Refinery CMS.}
   s.email             = %q{ruben@simplelogica.net}
+  s.homepage          = %q{http://simplelogica.net}
   s.authors           = ['Simplelógica','Rubén Sierra']
   s.require_paths     = %w(lib)
 
