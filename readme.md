@@ -14,15 +14,23 @@ users who need different locales at the same time.
 
 ## How to add this extension to your project
 
-### Refinery 2:
+### Refinery edge:
 
 #### Add gem to Gemfile
-    gem 'refinerycms-admin-locales'
+    gem 'refinerycms-admin-locales', 'git: git://github.com/simplelogica/refinerycms-admin-locales.git'
 
 #### Install extension
     rake refinery_admin_locales:install:migrations
     rake db:migrate
 
+### Refinery 2.0.*:
+
+#### Add gem to Gemfile
+    gem 'refinerycms-admin-locales', "~> 2.0.0"
+
+#### Install extension
+    rake refinery_admin_locales:install:migrations
+    rake db:migrate
 
 ### Refinery 1:
 

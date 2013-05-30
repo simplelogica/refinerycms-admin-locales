@@ -2,9 +2,9 @@ module Refinery
   module AdminLocales
     class Version
       @major = 2
-      @minor = 1
+      @minor = 0
       @tiny  = 0
-      @build = 'dev'
+      @build = nil
 
       class << self
         attr_reader :major, :minor, :tiny, :build
