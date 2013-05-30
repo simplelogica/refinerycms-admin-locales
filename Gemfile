@@ -2,14 +2,14 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
-gem 'refinerycms-i18n', :git => 'git://github.com/parndt/refinerycms-i18n.git'
-gem 'refinerycms-settings', :git => 'git://github.com/parndt/refinerycms-settings.git'
-
+gem 'refinerycms', '~> 2.0.0'
+gem 'refinerycms-i18n', '~> 2.0.0'
+gem 'refinerycms-settings', '~> 2.0.0'
 
 group :development, :test do
 
-  gem 'refinerycms-testing', :git => 'git://github.com/resolve/refinerycms.git'
+  gem 'therubyracer'
+  gem 'refinerycms-testing', '~> 2.0.0'
 
   unless defined?(JRUBY_VERSION)
     gem 'sqlite3'

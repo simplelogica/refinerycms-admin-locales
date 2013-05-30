@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.test_files        = `git ls-files -- spec/*`.split("\n")
 
   # Runtime dependencies
-  s.add_dependency    'refinerycms-core',     '~> 2.1.0.dev'
+  s.add_dependency    'refinerycms-core',     '~> 2.0.0'
 
   # Development dependencies (usually used for testing)
   s.add_development_dependency 'refinerycms-testing'
